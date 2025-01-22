@@ -20,3 +20,4 @@ const generateResponse = (prompt) => {
 };
 
 module.exports = { generateResponse };
+
