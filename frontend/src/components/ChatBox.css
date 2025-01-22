@@ -1,0 +1,82 @@
+.chat-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 80vh;
+  width: 400px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.messages-container {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.message-bubble {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  max-width: 70%;
+}
+
+.message-bubble.user {
+  background-color: #daf8e3;
+  align-self: flex-end;
+}
+
+.message-bubble.bot {
+  background-color: #f1f0f0;
+  align-self: flex-start;
+}
+
+.typing-indicator {
+  font-style: italic;
+  margin: 5px 10px;
+  color: #999;
+}
+
+.input-container {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.app-header {
+  text-align: center;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 10px 10px 0 0;
+}
+
+.developer-name {
+  font-size: 14px;
+  margin-top: 5px;
+  font-style: italic;
+}
