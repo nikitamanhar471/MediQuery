@@ -1,6 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+
+const TypingIndicator = () => {
+  const [dots, setDots] = useState("");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDots((prev) => (prev.length < 3 ? prev + "." : ""));
+    }, 500); // Change every 500ms
+    return () => clearInterval(interval);
+  }, []);
+
+  return <div className="typing-indicator">Thinking{dots}</div>;
+};
 
 const App = () => {
   const [messages, setMessages] = useState([]);
@@ -33,6 +46,11 @@ const App = () => {
     }
   };
 
+  const clearChat = () => {
+    setMessages([]);
+    setInput("");
+  };
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       sendMessage();
@@ -42,8 +60,14 @@ const App = () => {
   return (
     <div className="chat-container">
       <header className="chat-header">
-        <h1>MediQuery</h1>
-        <p>Developed by Nikita Manhar and Team</p>
+        <div className="header-content">
+          <h1>MediQuery</h1>
+          <p>Your AI Medical Assistant</p>
+          <h5>Developed by Nikita Manhar and Team</h5>
+        </div>
+        <button className="clear-chat" onClick={clearChat}>
+          🗑️ Clear Chat
+        </button>
       </header>
       <div className="chat-messages">
         {messages.map((msg, index) => (
@@ -51,10 +75,18 @@ const App = () => {
             key={index}
             className={`message ${msg.sender === "bot" ? "bot" : "user"}`}
           >
-            {msg.text}
+            {msg.sender === "bot" ? (
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: msg.text.replace(/\n/g, "<br />"),
+                }}
+              />
+            ) : (
+              <div>{msg.text}</div>
+            )}
           </div>
         ))}
-        {isTyping && <div className="message bot">Bot is typing...</div>}
+        {isTyping && <TypingIndicator />}
       </div>
       <div className="chat-input">
         <input
@@ -64,7 +96,9 @@ const App = () => {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
         />
-        <button onClick={sendMessage}>Send</button>
+        <button className="send-button" onClick={sendMessage}>
+          ➤ Send
+        </button>
       </div>
     </div>
   );
