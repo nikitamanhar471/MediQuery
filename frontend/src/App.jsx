@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 
@@ -8,7 +8,7 @@ const TypingIndicator = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setDots((prev) => (prev.length < 3 ? prev + "." : ""));
-    }, 500); // Change every 500ms
+    }, 500);
     return () => clearInterval(interval);
   }, []);
 
@@ -19,6 +19,7 @@ const App = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef(null); // Reference for the bottom of the chat
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -57,6 +58,11 @@ const App = () => {
     }
   };
 
+  // Automatically scroll to the bottom when messages update
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   return (
     <div className="chat-container">
       <header className="chat-header">
@@ -87,6 +93,7 @@ const App = () => {
           </div>
         ))}
         {isTyping && <TypingIndicator />}
+        <div ref={messagesEndRef} /> {/* Auto-scroll anchor */}
       </div>
       <div className="chat-input">
         <input

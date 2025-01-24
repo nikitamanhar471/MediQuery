@@ -59,17 +59,27 @@ body {
 /* Messages Styling */
 .chat-messages {
   flex: 1;
-  padding: 10px;
+  padding: 15px;
   overflow-y: auto;
   background: #f9f9f9;
+  max-height: 70vh; /* Set a max height */
+  scroll-behavior: smooth; /* Enable smooth scrolling */
 }
-
 .message {
   padding: 10px 15px;
   margin: 8px 0;
   border-radius: 20px;
   max-width: 70%;
   word-wrap: break-word;
+}
+
+.messages-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background: #007bff;
+  border-radius: 10px;
 }
 
 .message.user {
