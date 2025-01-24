@@ -1,0 +1,37 @@
+User Input: hi i am bapi
+Response: Hi Bapi, I understand you're not feeling well.  To help me understand your
+symptoms better, could you please tell me what's bothering you?  For example,
+what are your symptoms, how long have you been experiencing them, and where are
+you experiencing them (e.g., headache in the temples, cough in the chest)?  The
+more information you can provide, the better I can assist you.
+
+User Input: i feel hot 
+Response: Hi Bapi, "feeling hot" is a very general symptom. To help me understand what's
+going on, could you please tell me:
+
+1. **What is your temperature?**  Do you have a thermometer?
+
+2. **How long have you been feeling hot?**
+
+3. **Do you have any other symptoms?** (e.g., sweating, chills, headache, muscle
+aches, cough, sore throat, nausea, vomiting, diarrhea)
+
+4. **Are you sweating?** If so, are you sweating profusely or just slightly?
+
+5. **Have you recently been exposed to high temperatures or str...
+
+User Input: 101, 1day, headache, no,no
+Response: Let's clarify some things.  "101" likely refers to your temperature, so you have
+a fever of 101°F.  "1 day" indicates the headache has lasted for one day. The
+two "no" responses are unclear;  please specify if you're experiencing nausea or
+vomiting, and if you have any stiff neck or sensitivity to light.
+
+Assuming the "no" answers refer to the absence of nausea/vomiting and neck
+stiffness/light sensitivity, a probable diagnosis is a common viral infection
+causing a headache and fever.  However,...
+
+User Input: last two ques ans is no
+Response: Please provide me with the symptoms you are experiencing.  "Last two questions
+answered no" doesn't give me enough information to assess your health.  What
+symptoms are you concerned about?  When did they start?  How severe are they?
+

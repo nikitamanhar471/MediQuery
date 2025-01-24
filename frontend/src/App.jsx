@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
+import HistoryModal from "./components/HistoryModal";
 import "./App.css";
 
 const TypingIndicator = () => {
@@ -19,6 +20,7 @@ const App = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const messagesEndRef = useRef(null); // Reference for the bottom of the chat
 
   const sendMessage = async () => {
@@ -52,6 +54,10 @@ const App = () => {
     setInput("");
   };
 
+  const toggleHistoryModal = () => {
+    setIsHistoryOpen(!isHistoryOpen);
+  };
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       sendMessage();
@@ -73,6 +79,9 @@ const App = () => {
         </div>
         <button className="clear-chat" onClick={clearChat}>
           🗑️ Clear Chat
+        </button>
+        <button className="clear-chat" onClick={toggleHistoryModal}>
+          📜 History
         </button>
       </header>
       <div className="chat-messages">
@@ -107,6 +116,11 @@ const App = () => {
           ➤ Send
         </button>
       </div>
+      <HistoryModal
+        isOpen={isHistoryOpen}
+        onClose={toggleHistoryModal}
+        chatHistory={messages}
+      />
     </div>
   );
 };
